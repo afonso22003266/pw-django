@@ -1,0 +1,53 @@
+{% extends 'portfolio/layout.html' %}
+
+<!DOCTYPE html>
+<html lang="pt">
+
+{% block main %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Afonso Cautela">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap" rel="stylesheet">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'portfolio/css/heroPage.css' %}">
+
+    <title>HERO PAGE</title>
+</head>
+
+<body>
+    <div>
+
+        <header class="Cabecalho">
+            <div>
+                {% load static %}
+                <video class="CabecalhoVideo"
+                       src="{% static 'portfolio/images/deserto.mp4' %}" autoplay loop muted></video>
+                <div class="TextoMenu">
+                    <h1>Ou arriscas ou nunca saberás se vale a pena.</h1>
+                </div>
+            </div>
+        </header>
+    </div>
+
+
+
+    <div class="capitais">
+        <article>
+            Ogólnie znana teza głosi, iż użytkownika może rozpraszać zrozumiała zawartość strony, kiedy ten chce zobaczyć sam jej wygląd. Jedną z mocnych stron używania Lorem Ipsum jest to, że ma wiele różnych „kombinacji” zdań, słów i akapitów, w przeciwieństwie do zwykłego: „tekst, tekst, tekst”, sprawiającego, że wygląda to „zbyt czytelnie” po polsku. Wielu webmasterów i designerów używa Lorem Ipsum jako domyślnego modelu tekstu i wpisanie w internetowej wyszukiwarce ‘lorem ipsum’ spowoduje znalezienie bardzo wielu stron, które wciąż są w budowie. Wiele wersji tekstu ewoluowało i zmieniało się przez lata, czasem przez przypadek, czasem specjalnie (humorystyczne wstawki itd).
+        </article>
+    </div>
+
+
+    <div class="parallax2">
+        <h1 style="color: rgb(243,243,243);">To be continued...</h1>
+    </div>
+
+
+</body>
+</html>
+{% endblock %}
