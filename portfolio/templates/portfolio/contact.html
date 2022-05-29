@@ -1,0 +1,23 @@
+{% extends 'portfolio/layout.html' %}
+
+{% block main %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'portfolio/css/contact.css' %}">
+
+
+    <h3>Contact</h3>
+    <section class="about">
+        <div class="mainEstilo">
+            {% load static %}
+            <img src="{% static 'portfolio/images/xuxu.jpg' %}"/>
+            <div class="about-text">
+
+                <h2>Contact Me</h2>
+                <p>Tel: +351 965 252 263<br>Email: afonsocautela@hotmail.com</p>
+            </div>
+        </div>
+
+    </section>
+
+
+{% endblock %}

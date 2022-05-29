@@ -1,3 +1,4 @@
+from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
@@ -6,8 +7,8 @@ from matplotlib import pyplot as plt
 
 import datetime
 
-from portfolio.forms import PostForm
-from portfolio.models import Post, PontuacaoQuizz
+from portfolio.forms import PostForm, CadeiraForm, ProjetoForm
+from portfolio.models import Post, PontuacaoQuizz, Cadeira, Projeto
 
 
 def layout_view(request):
@@ -25,9 +26,16 @@ def apresentacao_view(request):
 def formacao_view(request):
     return render(request, 'portfolio/formacao.html')
 
+def contact_view(request):
+    return render(request, 'portfolio/contact.html')
 
 def projetos_view(request):
-    return render(request, 'portfolio/projetos.html')
+    form = ProjetoForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return HttpResponseRedirect(reverse('portfolio:projetos'))
+    context = {'projetos': Projeto.objects.all, 'form': form}
+    return render(request, 'portfolio/projetos.html', context)
 
 
 def competencias_view(request):
@@ -62,7 +70,12 @@ def index_view(request):
 
 
 def licenciatura_view(request):
-    return render(request, 'portfolio/licenciatura.html')
+    form = CadeiraForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return HttpResponseRedirect(reverse('portfolio:licenciatura'))
+    context = {'cadeiras': Cadeira.objects.all, 'form': form}
+    return render(request, 'portfolio/licenciatura.html', context)
 
 
 def heroPage_view(request):
@@ -109,6 +122,32 @@ def desenha_grafico_resultados():
     plt.barh(nomes, pontuacoes)
     plt.savefig("portfolio/static/portfolio/images/grafico.png", bbox_inches='tight')
 
+
+def login_view(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+
+        user = authenticate(
+            request, username=username, password=password)
+
+        if user is not None:
+            login(request, user)
+            return HttpResponseRedirect(reverse('portfolio:heroPage'))
+        else:
+            return render(request, 'portfolio/login.html', {
+                'message': 'Credenciais invalidas.'
+            })
+
+    return render(request, 'portfolio/login.html')
+
+
+def logout_view(request):
+    logout(request)
+
+    return render(request, 'portfolio/login.html', {
+        'message': 'Foi desconetado.'
+    })
 
 
 

@@ -21,3 +21,13 @@
   clear: left;
   background-color: skyblue;
 }
+
+form {
+    display: block;
+    margin: 50px;
+    width: 90%;
+    max-width: 500px;
+    background-color: #9c9dff;
+    padding: 15px;
+    border-radius: 2px;
+}

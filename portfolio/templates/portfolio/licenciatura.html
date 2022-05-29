@@ -4,15 +4,26 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'portfolio/css/licenciatura.css' %}">
 
-	<h3>Licenciatura</h3>
+
+    <h3>Licenciatura</h3>
     <div class="container">
-    <div>
-        <h2>Programação Web</h2>
-        <p>Aprender como utilizar Django, JavaScript, Html, Css, Python.</p>
+        {% for cadeira in cadeiras %}
+            <div>
+                <h2>{{ cadeira.nome }}</h2>
+                <p>{{ cadeira.descricao }}</p>
+            </div>
+        {% endfor %}
+
+        {% if request.user.is_authenticated %}
+            <form action="" method="POST">
+                <p>Crie Projetos</p>
+                {% csrf_token %}
+                {{ form.as_p }}
+
+                <input type="submit" value="Gravar" class="botao botao-sucesso">
+            </form>
+        {% endif %}
     </div>
 
 
-
-
-</div>
 {% endblock %}
