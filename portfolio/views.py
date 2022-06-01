@@ -26,8 +26,10 @@ def apresentacao_view(request):
 def formacao_view(request):
     return render(request, 'portfolio/formacao.html')
 
+
 def contact_view(request):
     return render(request, 'portfolio/contact.html')
+
 
 def projetos_view(request):
     form = ProjetoForm(request.POST or None)
@@ -148,6 +150,3 @@ def logout_view(request):
     return render(request, 'portfolio/login.html', {
         'message': 'Foi desconetado.'
     })
-
-
-
