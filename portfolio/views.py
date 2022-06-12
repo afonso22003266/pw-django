@@ -8,7 +8,7 @@ from matplotlib import pyplot as plt
 import datetime
 
 from portfolio.forms import PostForm, CadeiraForm, ProjetoForm
-from portfolio.models import Post, PontuacaoQuizz, Cadeira, Projeto
+from portfolio.models import Post, PontuacaoQuizz, Cadeira, Projeto, trabalhosFinaisCurso
 
 
 def layout_view(request):
@@ -17,6 +17,23 @@ def layout_view(request):
 
 def home_view(request):
     return render(request, 'portfolio/home.html')
+
+
+def tempo_view(request):
+    return render(request, 'portfolio/tempo.html')
+
+
+def tfcdetails_view(request, tfc_id):
+    tfc = trabalhosFinaisCurso.objects.get(pk=tfc_id)
+    contexto = {'tfc': tfc}
+
+    return render(request, 'portfolio/tfcdetails.html', contexto)
+
+
+def trabalhosFinaisCurso_view(request):
+    tfcs = trabalhosFinaisCurso.objects.all()
+    contexto = {'tfcs': tfcs}
+    return render(request, 'portfolio/tfc.html', contexto)
 
 
 def apresentacao_view(request):

@@ -30,5 +30,9 @@ urlpatterns = [
     path('blog', views.blog_view, name='blog'),
     path('quizz', views.quizz_view, name='quizz'),
     path('login', views.login_view, name='login'),
+    path('tfc', views.trabalhosFinaisCurso_view, name='tfc'),
+    path('tempo', views.tempo_view, name='tempo'),
+    path('tfcdetails/<int:tfc_id>', views.tfcdetails_view, name='tfcdetails'),
     path('logout', views.logout_view, name='logout'),
+    path('trabalhosFinaisCurso', views.trabalhosFinaisCurso_view, name='trabalhosFinaisCurso'),
 ]

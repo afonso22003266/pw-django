@@ -1,0 +1,11 @@
+{% extends 'portfolio/layout.html' %}
+{% block main %}
+    {% load static %}
+    <h1>{{ tfc.titulo }}</h1>
+<br>
+    <p>{{ tfc.resumo }}</p>
+
+    <p>Link para git: {{ tfc.git }}</p>
+
+
+{% endblock %}

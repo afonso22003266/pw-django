@@ -7,14 +7,54 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'portfolio/css/estilos.css' %}">
     <link rel="icon" type="image/x-icon" href="{% static 'portfolio/images/favicon.ico' %}">
+    <script>function startTime() {
+        const today = new Date();
+        let h = today.getHours();
+        let m = today.getMinutes();
+        let s = today.getSeconds();
+        m = checkTime(m);
+        s = checkTime(s);
+        document.getElementById('clk').innerHTML = h + ":" + m + ":" + s;
+        setTimeout(startTime, 1000);
+    }
+
+    function checkTime(i) {
+        if (i < 10) {
+            i = "0" + i
+        }
+        return i;
+    }</script>
+    <script>document.addEventListener('DOMContentLoaded', function () {
+        fetch('https://api.ipma.pt/open-data/forecast/warnings/warnings_www.json')
+            .then(response => response.json())
+            .then(data => {
+
+                document.querySelector(".tempo").innerHTML = data[0].text + data[0].awarenessTypeName + " Dia " + data[0].startTime;
+            });
+    });</script>
+    <script>const options = {
+	method: 'GET',
+	headers: {
+		accept: 'application/json',
+		'X-RapidAPI-Key': '08d0c27a28mshbda31efd3f2ab72p1e7a24jsnfb85499466c5',
+		'X-RapidAPI-Host': 'matchilling-chuck-norris-jokes-v1.p.rapidapi.com'
+	}
+};
+
+fetch('https://matchilling-chuck-norris-jokes-v1.p.rapidapi.com/jokes/random', options)
+	.then(response => response.json())
+	.then(response => document.querySelector(".chuck").innerHTML = "Um facto sobre o Chuck Norris:" + response.value)
+	.catch(err => console.error(err));
+    </script>
 
 </head>
 
-<body>
+<body onload="startTime()">
     <header>
         <div>
             <h3>Afonso Cautela</h3>
         </div>
+    <div id="clk"></div>
         <nav>
             <a href="{%  url 'portfolio:heroPage' %}">Home</a>
             <a href="{%  url 'portfolio:projetos' %}">Projetos</a>
@@ -22,6 +62,8 @@
             <a href="{%  url 'portfolio:blog' %}">Blog</a>
             <a href="{%  url 'portfolio:quizz' %}">Quizz</a>
             <a href="{%  url 'portfolio:contact' %}">Contact</a>
+            <a href="{%  url 'portfolio:tfc' %}">TFC's</a>
+            <a href="{%  url 'portfolio:tempo' %}">Meteorologia</a>
             {% if request.user.is_authenticated %}
             <a href="{%  url 'portfolio:logout' %}">Logout</a>
             {% else %}

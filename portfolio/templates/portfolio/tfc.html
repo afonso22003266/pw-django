@@ -1,0 +1,70 @@
+{% extends 'portfolio/layout.html' %}
+{% block main %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'portfolio/css/tfc.css' %}">
+
+    <div class="portfolio">
+        <h2 class="title">Latest Projects</h2>
+        <a href="{% url 'portfolio:tfcdetails' tfcs.0.id %}" class="card">
+            <div class="content">
+                <span class="title">Web Design</span>
+                <span class="category">Mobile / Design / Rebranding</span>
+            </div>
+            <div class="image">
+                <img src="{% static 'portfolio/images/tfc1.png' %}"/>
+            </div>
+        </a>
+
+        <a href="{% url 'portfolio:tfcdetails' tfcs.1.id %}" class="card">
+            <div class="content">
+                <span class="title">UX Design</span>
+                <span class="category">UX / UI / Research </span>
+            </div>
+            <div class="image">
+                <img src="{% static 'portfolio/images/tfc2.png' %}"/>
+            </div>
+        </a>
+
+        <a href="{% url 'portfolio:tfcdetails' tfcs.2.id %}" class="card">
+            <div class="content">
+                <span class="title">Concepts</span>
+                <span class="category">Design / Creative</span>
+            </div>
+            <div class="image">
+                <img src="{% static 'portfolio/images/tfc3.png' %}"/>
+            </div>
+        </a>
+
+        <a href="{% url 'portfolio:tfcdetails' tfcs.3.id %}" class="card">
+            <div class="content">
+                <span class="title">Creative & Cool</span>
+                <span class="category">Design / Food</span>
+            </div>
+            <div class="image">
+                <img src="{% static 'portfolio/images/tfc4.png' %}"/>
+            </div>
+        </a>
+
+        <a href="{% url 'portfolio:tfcdetails' tfcs.4.id %}" class="card">
+            <div class="content">
+                <span class="title">AR-VR</span>
+                <span class="category">VR / AR / Creative</span>
+            </div>
+            <div class="image">
+                <img src="{% static 'portfolio/images/tfc5.png' %}"/>
+            </div>
+        </a>
+
+        <a href="{% url 'portfolio:tfcdetails' tfcs.5.id %}" class="card">
+            <div class="content">
+                <span class="title">Logo</span>
+                <span class="category">Design / Logo / Clothing</span>
+            </div>
+            <div class="image">
+                <img src="{% static 'portfolio/images/tfc6.jpg' %}"/>
+            </div>
+        </a>
+
+
+    </div>
+{% endblock %}
